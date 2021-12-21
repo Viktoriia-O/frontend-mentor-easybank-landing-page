@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="178px" height="243px" viewBox="0 0 178 243" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>arrow</title>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+    <g id="arrow" transform="translate(8.517751, 8.869743)" stroke="#304EAF" stroke-width="16">
+      <line x1="80.4822492" y1="226.130257" x2="79.9822492" y2="14.6302567" id="Line" style="stroke: rgb(255, 255, 255);"/>
+      <line x1="2.78361837e-14" y1="80.2573984" x2="80.2573984" y2="-3.58963241e-16" id="Line" style="stroke: rgb(255, 255, 255);"/>
+      <line x1="160.964498" y1="80.2573984" x2="80.7070999" y2="1.14748175e-13" id="Line" style="stroke: rgb(255, 255, 255);"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,790 @@
+//header
+.header {
+    position: relative;
+    z-index: 2;
+    background-color: $color-white;
+
+    &__inner {
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        padding: 1.4rem 0;
+    }
+
+    .logo {
+        grid-column: 1 / span 6;
+
+        img {
+            width: 8.7rem;
+        }
+    }
+
+    .nav {
+
+        &__items {
+            display: none;
+        }
+
+        &__link {
+            position: relative;
+            font-size: 0.8rem;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: calc(100% + 1.8rem);
+                right: 100%;
+                left: 0;
+                height: 0.3rem;
+                background: $color-green;
+                background: linear-gradient(120deg, $color-green 0%, $color-blue 100%);
+                transition: right 0.2s linear;
+            }
+
+            &:hover {
+                color: $color-darkblue;
+
+                &::before {
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    .button {
+        display: none;
+        justify-self: end;
+    }
+
+    .menu-button {
+        grid-column: 12 / span 1;
+        justify-self: end;
+        width: 1.5rem;
+        height: 0.8rem;
+        background: center / 100% no-repeat url(../../dist/images/icon-hamburger.svg);
+        cursor: pointer;
+    }
+
+    @include breakpoint(sm) {
+
+        &__inner {
+            padding: 1rem 0;
+        }
+
+        .logo {
+            grid-column: 1 / span 3;
+        }
+
+        .nav {   
+            grid-column: 4 / span 6;
+
+            &__items {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+
+            &__item {
+                margin-right: 1.2rem;
+    
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .button {
+            grid-column: 10 / span 3;
+            display: inline-block;
+        }
+
+        .menu-button {
+            display: none;
+        }
+    }
+
+    @include breakpoint(lg) {
+
+        .logo {
+            grid-column: 1 / span 2;
+        }
+
+        .nav {   
+            grid-column: 5 / span 6;
+
+            &__item {
+                margin-right: 1.8rem;
+            }
+
+            &__link {
+                font-size: 0.9rem;
+            }
+        }
+
+        .button {
+            grid-column: 11 / span 2;
+        }
+    }
+}
+
+//mobile menu
+.mobile-open {
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $color-darkblue;
+        background: linear-gradient(0deg, rgba($color-darkblue, .2) 0%, $color-darkblue 100%);
+    }
+
+    .header {
+
+        .nav {  
+            position: absolute;
+            z-index: 2;
+            top: 5.5rem;
+            right: 1.6rem;
+            left: 1.6rem;
+
+            &__items {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                border-radius: 0.3rem;
+                background: $color-white;
+            }
+
+            &__item {
+                margin-bottom: 1.4rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            &__link {
+                font-size: 1.2rem;
+                color: $color-darkblue;
+
+                &::before {
+                    top: calc(100% + 0.2rem);
+                }
+            }
+        }
+
+        .menu-button {
+            background-image: url(../../dist/images/icon-close.svg);
+        }
+    }
+}
+
+//entry
+.entry {
+    position: relative;
+    overflow: hidden;
+    background: $color-verylightgrey;
+
+    &__inner {
+        z-index: 1;
+        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        grid-template-rows: repeat(2, auto) 4rem;
+        gap: 1.4rem;
+    }
+
+    &__content {
+        grid-row: 2 / span 1;
+        text-align: center;
+    }
+
+    &__heading {
+        margin-bottom: 1.2rem;
+    }
+
+    &__description {
+        margin-bottom: 2.3rem;
+    }
+
+    &__img-container {
+        grid-row: 1 / span 1;;
+        justify-self: center;
+        position: relative;
+        margin-top: -8rem;
+    }
+
+    &__bg {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -2rem;
+            bottom: 0;
+            left: -5rem;
+            background: bottom left/cover no-repeat url(../../dist/images/bg-intro-mobile.svg);
+        }
+    }
+
+    &__img {
+        min-width: 350px;
+    }
+
+    @include breakpoint(sm) {
+
+        &__inner {
+            grid-template-columns: repeat(auto-fit, minmax(32%, 1fr));
+            grid-template-rows: 1fr;
+            gap: 2rem;
+        }
+
+        &__content {
+            grid-row: 1;
+            padding-top: 4rem;
+            text-align: left;
+        }
+
+        &__heading {
+            margin-bottom: 1.4rem;
+        }
+
+        &__description {
+            margin-bottom: 3rem;
+        }
+
+        &__img-container {
+            grid-row: auto;
+            grid-column: 2;
+            margin-top: -1.5rem;
+        }
+
+        &__bg {
+                
+            &::before {
+                right: -4rem;
+                left: 0;
+                background-image: url(../../dist/images/bg-intro-desktop.svg);
+            }
+        }
+    }
+
+    @include breakpoint(md) {
+
+        &__inner {
+            gap: 8rem;
+        }
+
+        &__content {
+            padding-top: 7rem;
+        }
+    }
+
+    @include breakpoint(lg) {
+
+        &::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 6rem;
+            background-color: $color-lightgrey;
+        }
+
+        &__inner {
+            gap: 12rem;
+        }
+
+        &__content {
+            padding-top: 8rem;
+        }
+
+        &__img-container {
+            margin-top: -7rem;
+            margin-right: -10rem;
+        }
+
+        &__bg {
+            bottom: 6rem;
+            
+            &::before {
+                top: -10rem;
+                right: 0;
+                left: -7rem;
+            }
+        }
+
+        &__img {
+            min-width: 550px;
+        }
+    }
+
+    @include breakpoint(xl) {
+
+        &::before {
+            height: 9rem;
+        }
+
+        &__inner {
+            gap: 13rem;
+        }
+
+        &__content {
+            padding-top: 10.6rem;
+        }
+
+        &__img-contaiber {
+            margin-right: -16rem;
+        }
+
+        &__bg {
+            bottom: 9rem;
+        }
+
+        &__img {
+            min-width: 750px;
+        }
+    }
+}
+
+//features
+.features {
+    background: $color-lightgrey;
+
+    &__inner {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 0.6rem repeat(2, auto) 1rem;
+        row-gap: 3.4rem;
+        text-align: center;
+    }
+
+    &__title,
+    &__items {
+        grid-column: 1 / span 8;
+    }
+
+    &__title {
+        grid-row: 2 / span 1;
+    }
+
+    &__heading {
+        margin-bottom: 1.6rem;
+    }
+
+    &__items {
+        grid-row: 3 / span 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        gap: 1.5rem;
+    }
+
+    &__item-img {
+        width: 4.6rem;
+        margin: 0 auto 1.4rem auto;
+    }
+
+    &__item-heading {
+        margin-bottom: 1.8rem;
+    }
+
+    @include breakpoint(xs) {
+
+        &__title,
+        &__items {
+            grid-column: 2 / span 6;
+        }
+    }
+
+    @include breakpoint(sm) {
+
+        &__inner {
+            row-gap: 4rem;
+        }
+
+        &__title {
+            grid-column: 3 / span 4;
+        }
+
+        &__items {
+            grid-column: 1 / span 8;
+            grid-template-columns: repeat(auto-fit, minmax(32%, 1fr));
+            gap: 2rem;
+        }
+
+        &__item-img {
+            margin-bottom: 2.6rem;
+        }
+    }
+
+    @include breakpoint(md) {
+
+        &__items {
+            grid-column: 2 / span 6;
+        }
+    }
+
+    @include breakpoint(lg) {
+
+        &__inner {
+            grid-template-rows: repeat(2, auto) 2.2rem;
+            text-align: left;
+        }
+
+        &__title {
+            grid-row: 1 / span 1;
+            grid-column: 1 / span 5;
+        }
+
+        &__items {
+            grid-row: 2 / span 1;
+            grid-column: 1 / span 8;
+            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
+        }
+
+        &__item-img {
+            margin-left: 0;
+        }
+    }
+}
+
+//articles
+.articles {
+    background: $color-verylightgrey;
+
+    &__inner {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 2.8rem repeat(2, auto) 2rem;
+        row-gap: 3rem;
+    }
+
+    &__heading,
+    &__items {
+        grid-column: 1 / span 8;
+    }
+
+    &__heading {
+        grid-row: 2 / 3;
+        text-align: center;
+    }
+
+    &__items {
+        grid-row: 3 / 4;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        grid-auto-rows: 1fr;
+        gap: 1.5rem;
+    }
+
+    &__item {
+        background: $color-white;
+        border-radius: 0.4rem;
+    }
+
+    &__item-img {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 12.5rem;
+        border-radius: 0.4rem 0.4rem 0 0;
+    }
+
+    &__item-content {
+        padding: 1.8rem 2rem 2.6rem 2rem;
+    }
+
+    &__item-preheading {
+        display: block;
+        margin-bottom: 0.8rem;
+        font-size: 0.6rem;
+    }
+
+    &__item-heading {
+        margin-bottom: 0.6rem;
+    }
+
+    @include breakpoint(xs) {
+
+        &__items {
+            grid-column: 2 / span 6;
+        }
+    }
+
+    @include breakpoint(sm) {
+
+        &__items {
+            grid-column: 1 / span 8;
+            grid-template-columns: repeat(auto-fit, minmax(32%, 1fr));
+            gap: 2rem;
+        }
+
+        &__item-content {
+            padding: 1.8rem 1.5rem 1.4rem 1.5rem;
+        }
+    }
+
+    @include breakpoint(md) {
+
+        &__heading,
+        &__items {
+            grid-column: 2 / span 6;
+        }
+    }
+
+    @include breakpoint(lg) {
+
+        &__inner {
+            text-align: left;
+        }
+
+        &__heading {
+            grid-column: 1 / span 4;
+            grid-row: 2 / 3;
+            text-align: left;
+        }
+
+        &__items {
+            grid-column: 1 / span 8;
+            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
+        }
+    }
+}
+
+//back to top
+.back-to-top {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 6rem;
+    left: 0;
+
+    &.active {
+        display: grid;
+    }
+
+    &__button {
+        grid-column: 2 / span 1;
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        padding: 0.8rem;
+        border-radius: 50%;
+        background: $color-green;
+        background: linear-gradient(120deg, $color-green 0%, $color-blue 100%);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 50%;
+            background: $color-white;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        &:hover {
+
+            &::before {
+                opacity: .3;
+            }
+        }
+    }
+
+    img {
+        width: 1.2rem;
+        margin: 0 auto;
+    }
+
+    @include breakpoint(sm) {
+        justify-items: center;
+
+        &__button {
+            grid-column: 1 / span 1;
+        }
+    }
+}
+
+//footer
+.footer {
+    background: $color-darkblue;
+
+    &__inner {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 0.8rem repeat(3, auto) 0.8rem;
+        row-gap: 2.2rem;
+    }
+
+    &__left-column,
+    &__center-column,
+    &__right-column {
+        grid-column: 3 / span 8;
+    }
+
+    &__left-column,
+    &__right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__left-column {
+        grid-row: 2 / span 1;
+
+        .logo {
+            display: block;
+            margin-bottom: 1.7rem;
+
+            img {
+                width: 8.7rem;
+                margin: 0 auto;
+            }
+        }
+
+        .social {
+            display: flex;
+            flex-direction: row;
+
+            &__link {
+                margin-right: 0.8rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                svg {
+                    path {
+                        transition: fill 0.2s ease-in-out;
+                    }
+                }
+
+                &:hover {
+                    svg {
+                        path {
+                            fill: $color-green;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__center-column {
+        grid-row: 3 / span 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+
+    &__right-column {
+        grid-row: 4 / span 1;
+
+        .button {
+            margin-bottom: 1.8rem;
+        }
+
+        .copy {
+            display: block;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    }
+
+    .footer-nav {
+
+        &--left {
+            margin-bottom: 0.8rem;
+        }
+
+        &__item {
+            margin-bottom: 0.8rem;
+            text-align: center;
+    
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__link {
+            font-size: 0.9rem;
+            color: $color-white;
+            transition: color 0.2s ease-in-out;
+
+            &:hover {
+                color: $color-green;
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+
+        &__inner {
+            grid-template-rows: 1.4rem 1fr 2rem;
+            row-gap: 1.6rem;
+        }
+
+        &__left-column,
+        &__center-column,
+        &__right-column {
+            grid-row: 2 / span 1;
+        }
+
+        &__left-column {
+            grid-column: 1 / span 3;
+            align-items: flex-start;
+        }
+    
+        &__center-column {
+            grid-column: 5 / span 4;
+            grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        }
+    
+        &__right-column {
+            grid-column: 9 / span 4;
+            align-items: flex-end;
+
+            .copy {
+                text-align: right;
+            }
+        }
+
+        .footer-nav {
+
+            &--left {
+                margin-bottom: 0;
+            }
+    
+            &__item {
+                text-align: left;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+
+        &__center-column {
+            grid-column: 4 / span 4;
+        }
+    }
+}
+
+//attribution
+.attribution {
+    padding: 0.6rem 0;
+    background: $color-lightgrey;
+    text-align: center;
+
+    a {
+        color: hsl(228, 45%, 44%);
+    }
+}
