@@ -4,7 +4,7 @@
 const articlesDescription = document.querySelectorAll('.articles__item-description');
 const menuButton = document.querySelector('.menu-button');
 const body =  document.querySelector('body');
-const backToTop = document.querySelector('.back-to-top');
+const backToTop = document.querySelector('.back-to-top__button');
 
 
 //mobile menu

@@ -738,26 +738,33 @@ button:hover::before,
 }
 
 .back-to-top {
-  display: none;
   position: fixed;
   right: 0;
-  bottom: 6rem;
+  bottom: 8.2rem;
   left: 0;
 }
 
-.back-to-top.active {
-  display: grid;
+.back-to-top__inner {
+  display: block;
+  position: relative;
+  padding: 0 0.4rem;
 }
 
 .back-to-top__button {
-  grid-column: 2 / span 1;
-  position: relative;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: auto;
   width: 3rem;
   height: 3rem;
   padding: 0.8rem;
   border-radius: 50%;
   background: #31d35c;
   background: linear-gradient(120deg, #31d35c 0%, #2bb7da 100%);
+}
+
+.back-to-top__button.active {
+  display: block;
 }
 
 .back-to-top__button::before {
@@ -784,11 +791,8 @@ button:hover::before,
 }
 
 @media only screen and (min-width: 768px) {
-  .back-to-top {
-    justify-items: center;
-  }
-  .back-to-top__button {
-    grid-column: 1 / span 1;
+  .back-to-top__inner {
+    padding: 0 0.4rem;
   }
 }
 
